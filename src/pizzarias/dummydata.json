@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "pizzeria_name": "Bakes and Bites",
+        "city": "Lahore",
+        "state": "PU",
+        "description": "Phone numbers in the United States typically consist of 11 digits — the 1-digit country code, a 3-digit area code and a 7-digit telephone number. The 7-digit telephone number is further comprised of a 3-digit central office or exchange code and a 4-digit subscriber number. The country code of USA is +1.",
+        "is_active": true,
+        "email": ""
+    },
+    {
+        "id": 2,
+        "pizzeria_name": "Big Bell Pizza",
+        "city": "Multan",
+        "state": "PU",
+        "description": "Phone numbers in the United States typically consist of 11 digits — the 1-digit country code, a 3-digit area code and a 7-digit telephone number. The 7-digit telephone number is further comprised of a 3-digit central office or exchange code and a 4-digit subscriber number. The country code of USA is +1.",
+        "is_active": true,
+        "email": ""
+    },
+    {
+        "id": 3,
+        "pizzeria_name": "Piazza Hut",
+        "city": "Karachi",
+        "state": "SI",
+        "description": "Kirill (Nikita Volkov) gets back after a work festivity to discover another person living in his loft. Before long he tracks down that nobody recalls that him-Not even the public authority! He finds he has been decided to be an import/export officer, an individual who can open ways to different universes.\r\n\r\nThis film feels like a work in progress. There was so much addressed and packed into this film. It would have done well to extend a few pieces of the storyline. The sentiment among Kirill and Anna had no profundity or goal. Despite the fact that there were a couple of contacting minutes they weren’t adequately long to allow you to mind.",
+        "is_active": true,
+        "email": ""
+    }
+]
