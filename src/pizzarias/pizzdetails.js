@@ -5,8 +5,6 @@ import PizzaList from "./pizzarias";
 class PizzaDetails extends Component {
     render() {
         const p = this.props.p
-        console.log(p)
-
         return (
             <div>
                 <h4>{p.id}</h4>

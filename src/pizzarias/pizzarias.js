@@ -1,13 +1,28 @@
 import React, {Component} from 'react';
-import DummyJson from './dummydata.json';
 import PizzaDetails from './pizzdetails';
+import axios from 'axios';
 
 class PizzaList extends Component{
+    state = {
+        pizzaList : []
+    }
+
+    componentDidMount() {
+        axios.get('http://127.0.0.1:8000/pizza/')
+        .then((response) => {
+            this.setState({pizzaList: response.data})
+            console.log(response.data)
+        })
+        .catch(function (error){
+            console.log(error)
+        })
+    }
+
     render() {
         return (
             <div>
-                {DummyJson.map( item =>  {
-                    return <PizzaDetails p = {item} />
+                {this.state.pizzaList.map( item =>  {
+                    return <PizzaDetails key={item.id} p = {item} />
                 })
                 }
             </div>
