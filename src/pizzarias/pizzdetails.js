@@ -4,12 +4,16 @@ import PizzaList from "./pizzarias";
 
 class PizzaDetails extends Component {
     render() {
-        const p = this.props.p
+        const pizzaDetails = this.props.pizzDetails;
         return (
-            <div>
-                <h4>{p.id}</h4>
-                <h4>{p.pizzeria_name}</h4>
-                <h4>{p.city}</h4>
+            <div style={{color: "yellow", border:"1px solid yellow"}}>
+                <h4>{pizzaDetails.pizzeria_name}</h4>
+                <h5>
+                    Address: {pizzaDetails.city} - {pizzaDetails.state}
+                </h5>
+
+                <p>{pizzaDetails.description}</p>
+
             </div>
         )
     }

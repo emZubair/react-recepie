@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src="https://book.nyc3.digitaloceanspaces.com/pizza.jpg" className="App-logo" alt="logo" />
+        <img src="/images/pizza.jpeg" className="App-logo" alt="logo" />
         <h1>
           Pizza vs Pizza
         </h1>
