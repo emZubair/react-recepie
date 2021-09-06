@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 
-const SERVER_URL = 'http://127.0.0.1:8000';
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 class PizzeriaForm extends Component{
 

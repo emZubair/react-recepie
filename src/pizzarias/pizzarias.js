@@ -3,7 +3,7 @@ import PizzaDetails from './pizzdetails';
 import PizzeriaForm from './pizzeria_from';
 import axios from 'axios';
 
-const SERVER_URL = 'http://127.0.0.1:8000';
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 class PizzaList extends Component{
 
@@ -14,6 +14,7 @@ class PizzaList extends Component{
             pizzeria: "",
             showComponent: false
         };
+        this.deletePizza=this.deletePizza.bind(this);
         this.getPizzaDetails=this.getPizzaDetails.bind(this);
         this.showPizzaDetails=this.showPizzaDetails.bind(this);
     }
@@ -21,30 +22,48 @@ class PizzaList extends Component{
     getPizzaDetails(item) {
         axios.get(SERVER_URL.concat(item.absolute_url))
         .then((response) => {
-            console.log("Pizza Details found ", response.data)
+            // console.log("Pizza Details found ", response.data)
             this.setState({pizzeria: response.data})
+            this.setState({showComponent: true})
         }).catch(function (error){
             console.log("Error fetching details, "+error)
         })
     }
 
-    showPizzaDetails(item) {
-        if (this.state.showComponent && item.pizzeria_name === this.state.pizzeria.pizzeria_name) {
-            console.log("Hiding component")
-            this.setState({showComponent: false})
-            return
-        }
-        console.log("Fetching details")
-        this.getPizzaDetails(item)
-        this.setState({showComponent: true})
+    hidePizzaDetails() {
+        this.setState({showComponent: false})
     }
 
+    showPizzaDetails(item) {
+        if (this.state.showComponent && item.pizzeria_name === this.state.pizzeria.pizzeria_name) {
+            this.hidePizzaDetails()
+            return
+        }
+        this.getPizzaDetails(item)
+    }
+
+    deletePizza(item) {
+        console.log("delete item "+ item.pizzeria_name)
+        axios
+        .delete(SERVER_URL.concat(item.delete))
+        .then((response) => {
+            const index = this.state.pizzaList.indexOf(item)
+            var itemArray = this.state.pizzaList;
+            itemArray.splice(index, 1)
+            this.setState({pizzaList: itemArray})
+            this.hidePizzaDetails()
+            console.log("Deleted")
+        })
+        .catch(function(error){
+            console.log(error)
+        })
+    }
 
     componentDidMount() {
         axios.get(SERVER_URL.concat('/pizza/'))
         .then((response) => {
             this.setState({pizzaList: response.data})
-            console.log(response.data)
+            // console.log(response.data)
         })
         .catch(function (error){
             console.log(error)
@@ -67,7 +86,7 @@ class PizzaList extends Component{
                     })
                 }
                 
-                {this.state.showComponent ? ( <PizzaDetails pizzDetails={this.state.pizzeria} /> ) : null }
+                {this.state.showComponent ? ( <PizzaDetails pizzobj={this.state.pizzeria} onDelete={this.deletePizza} /> ) : null }
 
             </div>
         )
