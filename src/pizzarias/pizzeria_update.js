@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ReactPropTypes } from "react";
 import React, {Component} from "react";
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -16,6 +17,12 @@ class PizzaUpdate extends Component{
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
+    }
+
+    static get propTypes() {
+        return {
+            obj: ReactPropTypes.any
+        }
     }
 
     render() {
