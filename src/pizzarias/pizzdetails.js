@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
 import PizzaUpdate from './pizzeria_update';
-
+import { ReactPropTypes } from "react";
 
 class PizzaDetails extends Component {
 
@@ -9,6 +9,14 @@ class PizzaDetails extends Component {
         this.state = {
             showUpdate: false,
             pizzobj: this.props.pizzobj
+        }
+    }
+
+    static get propTypes() {
+        return {
+            showUpdate: ReactPropTypes.bool,
+            pizzobj: ReactPropTypes.any,
+            onDelete: ReactPropTypes.func
         }
     }
 
@@ -28,6 +36,7 @@ class PizzaDetails extends Component {
                 <h5>
                     Address: {pizzobj.city} - {pizzobj.state}
                 </h5>
+                <img src={pizzobj.logo_image} className="item-logo" alt="logo" />
 
                 <p>{pizzobj.description}</p>
 
